@@ -26,18 +26,19 @@ import { MessageEditor } from './message-editor';
 import { DocumentPreview } from './document-preview';
 import { MessageReasoning } from './message-reasoning';
 
-interface PreviewMessageProps {
+export interface PreviewMessageProps {
   chatId: string;
   message: Message;
   isLoading: boolean;
-  setMessages: (
-    messages: Message[] | ((messages: Message[]) => Message[])
-  ) => void;
-  reload: (
-    chatRequestOptions?: ChatRequestOptions
-  ) => Promise<string | null | undefined>;
+  vote?: {
+    chatId: string;
+    messageId: string;
+    isUpvoted: boolean;
+  };
+  setMessages: (messages: Message[] | ((messages: Message[]) => Message[])) => void;
+  reload: (chatRequestOptions?: ChatRequestOptions) => Promise<string | null | undefined>;
   isReadonly: boolean;
-}
+} 
 
 export const PurePreviewMessage = ({
   chatId,
